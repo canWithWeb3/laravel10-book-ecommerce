@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::prefix("/")->controller(UserController::class)->group(function(){
     Route::post("logout", "logout")->middleware("user");
 });
 
-Route::prefix("/admin")->group(function(){
+Route::prefix("/admin")->middleware("admin")->group(function(){
     Route::get("", [AdminController::class, "dashboard"]);
-})->middleware("admin");
+    Route::resource("categories", CategoryController::class);
+});

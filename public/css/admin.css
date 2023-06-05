@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin{
+    display: flex;
+    min-height: 100vh;
+    background-color: #F3F3F3;
+}
+
+.admin .sidebar{
+    background-color: #198754;
+}
+
+.admin .sidebar .sidebar-brand{
+    display: block;
+    width: 220px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 27px;
+    text-align: center;
+    padding: 13px 0;
+    border-bottom: 3px solid #fff;
+    margin-bottom: 18px;
+}
+
+.admin .sidebar .sidebar-menu{
+    padding: 0 8px;
+}
+
+.admin .sidebar .sidebar-menu a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.admin .sidebar .sidebar-menu a:hover{
+    background-color: #fff;
+    color: #198754;
+}
+
+.admin .content{
+    width: 100%;
+}
+
+.admin .content .header{
+    display: flex;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+.admin .content img{
+    border-radius: 77px;
+}
+
+.admin .content .main{
+
+}
