@@ -17,8 +17,8 @@
                         @foreach($carts as $cart)
                             <tr>
                                 <td class="p-0">
-                                    <a href="{{ url('/') }}">
-                                        <img width="100%" src="" alt="">
+                                    <a href="{{ url('/book-detail/'.$cart->book->id) }}">
+                                        <img width="100%" src="{{ $cart->book->image }}" alt="">
                                     </a>
                                 </td>
                                 <td>{{ $cart->book->name }}</td>
