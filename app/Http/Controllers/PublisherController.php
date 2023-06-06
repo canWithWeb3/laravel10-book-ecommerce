@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class PublisherController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::orderBy("id", "DESC")->get();
-        return view("admin.categories.categories", compact("categories"));
+        $publishers = Publisher::orderBy("id", "DESC")->get();
+        return view("admin.publishers.publishers", compact("publishers"));
     }
 
     /**
@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view("admin.categories.create-category");
+        return view("admin.publishers.create-publisher");
     }
 
     /**
@@ -34,13 +34,13 @@ class CategoryController extends Controller
             "name" => "bail|required|min:2|max:255"
         ]);
 
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
+        $publisher = new Publisher();
+        $publisher->name = $request->name;
+        $publisher->save();
 
-        return redirect("/admin/categories")
+        return redirect("/admin/publishers")
                 ->with("alert_status", "success")
-                ->with("alert_message", "Category created");
+                ->with("alert_message", "Publisher created");
     }
 
     /**
@@ -56,8 +56,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::findOrFail($id);
-        return view("admin.categories.update-category", compact("category"));
+        $publisher = Publisher::findOrFail($id);
+        return view("admin.publishers.update-publisher", compact("publisher"));
     }
 
     /**
@@ -69,24 +69,24 @@ class CategoryController extends Controller
             "name" => "bail|required|min:2|max:255"
         ]);
 
-        $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->save();
+        $publisher = Publisher::findOrFail($id);
+        $publisher->name = $request->name;
+        $publisher->save();
 
-        return redirect("/admin/categories")
+        return redirect("/admin/publishers")
                 ->with("alert_status", "success")
-                ->with("alert_message", "Category updated");
+                ->with("alert_message", "Publisher updated");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Publisher $publisher)
     {
-        $category->delete();
+        $publisher->delete();
 
-        return redirect("/admin/categories")
+        return redirect("/admin/publishers")
                 ->with("alert_status", "success")
-                ->with("alert_message", "Category deleted");
+                ->with("alert_message", "Publisher deleted");
     }
 }

@@ -4,6 +4,22 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.th-2{
+    width: 188px;
+}
+
+.th-image{
+    width: 88px;
+    padding: 0;
+    margin: 0;
+}
+
+.td-image{
+    width: 88px;
+    padding: 0;
+    margin: 0;
+}
+
 .admin{
     display: flex;
     min-height: 100vh;
@@ -56,7 +72,7 @@
     justify-content: space-between;
 }
 
-.admin .content img{
+.admin .content .nav-link img{
     border-radius: 77px;
 }
 

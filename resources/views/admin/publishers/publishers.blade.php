@@ -3,8 +3,8 @@
     @include("includes.delete-modal")
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <h1 class="h4">Categories</h1>
-        <a href="{{ url("/admin/categories/create") }}" class="btn btn-success"><i class="fas fa-plus"></i> Create</a>
+        <h1 class="h4">Publishers</h1>
+        <a href="{{ url("/admin/publishers/create") }}" class="btn btn-success"><i class="fas fa-plus"></i> Create</a>
     </div>
 
     <hr>
@@ -17,13 +17,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($categories as $category)
+            @foreach($publishers as $publisher)
                 <tr>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $publisher->name }}</td>
                     <td>
-                        <a href="{{ url("/admin/categories/" . $category->id . "/edit") }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Update</a>
+                        <a href="{{ url("/admin/publishers/" . $publisher->id . "/edit") }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Update</a>
                         <button type="button"
-                            data-url="{{ "/admin/categories/$category->id" }}"
+                            data-url="{{ "/admin/publishers/$publisher->id" }}"
                             class="delete-btn btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
                     </td>
                 </tr>

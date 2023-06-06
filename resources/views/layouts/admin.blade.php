@@ -25,6 +25,9 @@
             <div class="sidebar-menu">
                 <a href="{{ url("/") }}" class="sidebar-menu-link">Dashboard</a>
                 <a href="{{ url("/admin/categories") }}" class="sidebar-menu-link">Kategoriler</a>
+                <a href="{{ url("/admin/books") }}" class="sidebar-menu-link">Kitaplar</a>
+                <a href="{{ url("/admin/publishers") }}" class="sidebar-menu-link">Publishers</a>
+                <a href="{{ url("/admin/writers") }}" class="sidebar-menu-link">Yazarlar</a>
             </div>
         </div>
         <div class="content">

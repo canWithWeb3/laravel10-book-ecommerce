@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- csrf token --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     {{-- fontawesome css --}}
@@ -19,10 +22,9 @@
   </head>
   <body>
 
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-            <a class="navbar-brand" href="{{ url("/") }}"><i class="fa-solid fa-book text-success"></i> Bookly</a>
+            <a class="navbar-brand" href="{{ url("/") }}"><i class="fa-solid fa-book"></i> Bookly</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,6 +32,16 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url("/") }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kategoriler
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach(\App\Models\Category::orderBy("name","ASC")->get() as $category)
+                                <li><a class="dropdown-item" href="{{ url("/login") }}">{{ $category->name }}</a></li>
+                            @endforeach
+                        </ul>
                     </li>
                     @admin
                         <li class="nav-item">
@@ -64,6 +76,26 @@
                             @endguest
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-md-2 position-relative" href="{{ url("/cart") }}">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span style="" id="cartCount" class="position-absolute top-25 start-75 translate-middle badge border border-light rounded-circle bg-danger">
+                                @guest
+                                    0
+                                @else
+                                    @php
+                                        $user_id = Auth::user()->id;
+                                        $books = Illuminate\Support\Facades\DB::table("carts")->select("count")->where("user_id", "=", $user_id)->get();
+                                        $total = 0;
+                                        foreach($books as $b){
+                                            $total += $b->count;
+                                        }
+                                    @endphp
+                                    {{ $total }}
+                                @endguest
+                            </span>
+                        </a>
+                    </li>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -87,6 +119,14 @@
 
     {{-- includes --}}
     @include("includes.toast")
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
     @yield("scripts")
 

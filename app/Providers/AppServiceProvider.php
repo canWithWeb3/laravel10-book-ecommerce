@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
             }
 
             return false;
+        });
+
+        Blade::if("get_categories", function(){
+            $categories = Category::all();
+            return $categories;
         });
     }
 }
