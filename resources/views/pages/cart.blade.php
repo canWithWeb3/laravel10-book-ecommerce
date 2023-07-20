@@ -15,19 +15,21 @@
                     </thead>
                     <tbody>
                         @foreach($carts as $cart)
-                            <tr>
-                                <td class="p-0">
-                                    <a href="{{ url('/book-detail/'.$cart->book->id) }}">
-                                        <img width="100%" src="{{ $cart->book->image }}" alt="">
-                                    </a>
-                                </td>
-                                <td>{{ $cart->book->name }}</td>
-                                <td style="width:98px;">$ 48</td>
-                                <td style="width:48px;">{{ $cart->count }}</td>
-                                <td style="width:98px;">
-                                    <button data-id="{{ $cart->id }}" class="deleteCart btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
-                                </td>
-                            </tr>
+                            @if($cart->book)
+                                <tr>
+                                    <td class="p-0">
+                                        <a href="{{ url('/book-detail/'.$cart->book->id) }}">
+                                            <img width="100%" src="{{ $cart->book->image }}" alt="">
+                                        </a>
+                                    </td>
+                                    <td>{{ $cart->book->name }}</td>
+                                    <td style="width:98px;">$ 48</td>
+                                    <td style="width:48px;">{{ $cart->count }}</td>
+                                    <td style="width:98px;">
+                                        <button data-id="{{ $cart->id }}" class="deleteCart btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

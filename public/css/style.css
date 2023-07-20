@@ -4,6 +4,31 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.section-title{
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.section-title::before{
+    content: "";
+    position: absolute;
+    top:50%;
+    left:0%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: .01rem;
+    background: rgba(0, 0, 0, .1);
+    z-index: -1;
+}
+
+.section-title span{
+    font-size: 2.2rem;
+    padding: .5rem 2rem;
+    color: black;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
 .home-header-img{
     background-image: url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
     object-fit: cover;
@@ -17,4 +42,38 @@
     left:50%;
     transform: translate(-50%,-50%);
     text-align: center;
+}
+
+.home-subscribe{
+    background-image: url("https://cdn.pixabay.com/photo/2016/06/01/06/26/open-book-1428428_1280.jpg");
+    background-attachment: fixed;
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.home-subscribe .black{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 480px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.home-subscribe .content{
+    position: absolute;
+    text-align: center;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 480px;
+    z-index: 3;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

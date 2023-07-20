@@ -88,7 +88,9 @@
                                         $books = Illuminate\Support\Facades\DB::table("carts")->select("count")->where("user_id", "=", $user_id)->get();
                                         $total = 0;
                                         foreach($books as $b){
-                                            $total += $b->count;
+                                            if($b){
+                                                $total += $b->count;
+                                            }
                                         }
                                     @endphp
                                     {{ $total }}
@@ -105,9 +107,13 @@
         </div>
     </nav>
 
-    <main>
+    <main style="min-height:84vh;">
         @yield("content")
     </main>
+
+    <footer class="py-3 text-center bg-success text-white">
+        <p class="mb-0">Bütün Hakları Saklıdır &copy; 2023</p>
+    </footer>
 
     {{-- jquery js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

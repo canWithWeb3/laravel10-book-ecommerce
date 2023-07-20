@@ -5,6 +5,11 @@
             <div class="card">
                 <div class="card-header">Login</div>
                 <div class="card-body">
+                    <div class="alert alert-warning">
+                        <div><strong>Admin girişi için:</strong></div>
+                        <div><strong>Email:</strong> admin@gmail.com</div>
+                        <div><strong>Email:</strong> admin1</div>
+                    </div>
                     <form action="{{ url("/login") }}" method="POST">
                         @csrf
                         {{-- email --}}

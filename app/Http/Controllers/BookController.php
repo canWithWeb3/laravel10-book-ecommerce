@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Publisher;
 use App\Models\Writer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -114,6 +115,7 @@ class BookController extends Controller
     {
         $book->delete();
         $book->categories()->delete();
+        DB::table("carts")->where("book_id", "=", $book->id)->delete();
 
         return redirect("/admin/books")
                 ->with("alert_status", "success")
